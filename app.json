@@ -1,30 +1,56 @@
 {
   "expo": {
-    "name": "unas-pies",
+    "name": "Ideas y diseños de pedicura",
     "slug": "unas-pies",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/pedicura-logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/pedicura-splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#AF72A2"
     },
+    "scheme": "foot-nails-designs",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Permite a Ideas y diseños de pedicura acceder a tus fotos para descargar la imagen.",
+        "NSPhotoLibraryAddUsageDescription": "Permite a Ideas y diseños de pedicura acceder a tus fotos para descargar la imagen."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/pedicura-logo.png",
+        "backgroundColor": "#AF72A2"
+      },
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION"
+      ],
+      "package": "com.paulaymanu113.unaspies"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Permite a Ideas y diseños de pedicura acceder a tus fotos para descargar la imagen.",
+          "savePhotosPermission": "Permite a DIdeas y diseños de pedicura acceder a tus fotos para descargar la imagen.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4a40acc3-6a04-4b1d-b8ca-a3c9cf6c0465"
+      }
     }
   }
 }
