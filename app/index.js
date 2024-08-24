@@ -7,7 +7,9 @@ import { categories_raw } from "../src/utils/data";
 import { Pressable } from "react-native";
 import { Image } from "expo-image";
 import Animated from "react-native-reanimated";
-import { scheduleWeeklyNotification } from "../src/utils/notifications";
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
+import { bannerId } from "../src/utils/constants";
+// import { scheduleWeeklyNotification } from "../src/utils/notifications";
 
 export default function List() {
 
@@ -16,7 +18,7 @@ export default function List() {
     useEffect(() => scheduleNotification(), [])
     
     function scheduleNotification() {
-        scheduleWeeklyNotification()
+        // scheduleWeeklyNotification()
     }
 
     return (
@@ -25,6 +27,7 @@ export default function List() {
             <View style={styles.title}>
                 <Text style={ui.h2}>Diseños para todas las temporadas</Text>
             </View>
+            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             {
                 categories.length > 0 ?
                     <View style={styles.list}>

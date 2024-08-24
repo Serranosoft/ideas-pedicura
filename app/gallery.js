@@ -1,11 +1,14 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import { Link, Stack, useLocalSearchParams } from "expo-router";
 import LottieView from 'lottie-react-native';
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { fetchImages } from "../src/utils/data";
 import { Pressable } from "react-native";
 import { Image } from "expo-image";
 import Header from "../src/components/header";
+import AdsHandler from "../src/components/AdsHandler";
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
+import { bannerId } from "../src/utils/constants";
 
 export default function gallery() {
 
@@ -14,15 +17,28 @@ export default function gallery() {
     const { name, qty } = params;
     const [images, setImages] = useState([]);
 
+    const [triggerAd, setTriggerAd] = useState(0);
+    const adsHandlerRef = createRef();
+
     useEffect(() => {
         if (images.length < 1) {
             fetchImages(name, qty).then((result) => setImages(result));
         }
     }, [])
 
+    // Gestión de anuncios
+    useEffect(() => {
+        if (triggerAd === 2) {
+            adsHandlerRef.current.showIntersitialAd();
+            setTriggerAd(0)
+        }
+    }, [triggerAd])
+
     return (
         <View style={styles.container}>
             <Stack.Screen options={{ header: () => <Header title={`Diseño de uñas de ${name}`} /> }} />
+            <AdsHandler ref={adsHandlerRef} adType={[0]} />
+            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             {
                 images.length > 0 ?
                     <View style={styles.list}>

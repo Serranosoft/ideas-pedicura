@@ -27,6 +27,7 @@
         "foregroundImage": "./assets/pedicura-logo.png",
         "backgroundColor": "#AF72A2"
       },
+      "versionCode": 2,
       "permissions": [
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
@@ -45,7 +46,16 @@
           "savePhotosPermission": "Permite a DIdeas y diseños de pedicura acceder a tus fotos para descargar la imagen.",
           "isAccessMediaLocationEnabled": true
         }
-      ]
+      ],
+      "expo-font",
+      "expo-router",
+      [
+        "react-native-google-mobile-ads", 
+        {
+            "androidAppId": "ca-app-pub-3738413299329691~9291948619",
+            "iosAppId": "ca-app-pub-3738413299329691~9291948619"
+        }
+    ]
     ],
     "extra": {
       "eas": {
