@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/pedicura-logo.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/pedicura-splash.png",
       "resizeMode": "contain",
@@ -19,8 +20,10 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Permite a Ideas y diseños de pedicura acceder a tus fotos para descargar la imagen.",
-        "NSPhotoLibraryAddUsageDescription": "Permite a Ideas y diseños de pedicura acceder a tus fotos para descargar la imagen."
-      }
+        "NSPhotoLibraryAddUsageDescription": "Permite a Ideas y diseños de pedicura acceder a tus fotos para descargar la imagen.",
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "bundleIdentifier": "com.paulaymanu113.unaspies"
     },
     "android": {
       "adaptiveIcon": {
@@ -50,12 +53,12 @@
       "expo-font",
       "expo-router",
       [
-        "react-native-google-mobile-ads", 
+        "react-native-google-mobile-ads",
         {
-            "androidAppId": "ca-app-pub-3738413299329691~9291948619",
-            "iosAppId": "ca-app-pub-3738413299329691~9291948619"
+          "androidAppId": "ca-app-pub-3738413299329691~9291948619",
+          "iosAppId": "ca-app-pub-3738413299329691~9291948619"
         }
-    ]
+      ]
     ],
     "extra": {
       "eas": {
