@@ -2,47 +2,47 @@ export const categories_raw = [
     {
         name: "Brillantes",
         qty: 9,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-brillantes-6.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-brillantes-5.jpg",
     },
     {
         name: "Dibujos",
         qty: 12,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-dibujos-9.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-dibujos-8.jpg",
     },
     {
         name: "Elegantes",
         qty: 8,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-elegantes-2.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-elegantes-3.jpg",
     },
     {
         name: "Florecitas",
         qty: 10,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-florecitas-1.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-florecitas-2.jpg",
     },
     {
         name: "Francesas",
         qty: 9,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-francesas-2.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-francesas-1.jpg",
     },
     {
         name: "Navidad",
         qty: 9,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-navidad-7.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-navidad-6.jpg",
     },
     {
         name: "Oscuras",
         qty: 13,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-oscuras-11.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-oscuras-10.jpg",
     },
     {
         name: "Sencillas",
         qty: 9,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-sencillas-8.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-sencillas-7.jpg",
     },
     {
         name: "Verano",
         qty: 10,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-verano-9.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/unas-pies-verano-8.jpg",
     },
 ]
 

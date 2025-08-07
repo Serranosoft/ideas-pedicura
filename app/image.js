@@ -5,15 +5,20 @@ import { ui } from "../src/utils/styles";
 import * as FileSystem from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';
 import { ImageZoom } from '@likashefqet/react-native-image-zoom';
+import { useContext } from "react";
+import { DataContext } from "../src/DataContext";
 
 export default function ImageWrapper() {
 
     const params = useLocalSearchParams();
     const { image } = params;
+    const { setShowOpenAd } = useContext(DataContext);
+    
     const imageRef = image.substring(image.lastIndexOf("/") + 1, image.lastIndexOf("."));
     
     async function requestPermissions() {
         try {
+            setShowOpenAd(false);
             const { status } = await MediaLibrary.requestPermissionsAsync();
             if (status === "granted") {
                 downloadImage();

@@ -2,32 +2,29 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Link, Stack } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { categories_raw } from "../src/utils/data";
 import { Pressable } from "react-native";
 import { Image } from "expo-image";
 import Animated from "react-native-reanimated";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId } from "../src/utils/constants";
-// import { scheduleWeeklyNotification } from "../src/utils/notifications";
+import { DataContext } from "../src/DataContext";
 
 export default function List() {
 
     const [categories, setCategories] = useState([])
+    const { adsLoaded, setAdTrigger } = useContext(DataContext);
     useMemo(() => setCategories(categories_raw), [categories]);
-    useEffect(() => scheduleNotification(), [])
     
-    function scheduleNotification() {
-        // scheduleWeeklyNotification()
-    }
-
+    
     return (
         <View style={styles.container} sharedTransitionTag="first">
             <Stack.Screen options={{ headerShown: false }} />
             <View style={styles.title}>
                 <Text style={ui.h2}>Diseños para todas las temporadas</Text>
             </View>
-            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            { adsLoaded && <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
             {
                 categories.length > 0 ?
                     <View style={styles.list}>
@@ -40,7 +37,7 @@ export default function List() {
                                 return (
                                     <Animated.View key={i} style={styles.itemWrapper}>
                                         <Link asChild href={{ pathname: "/gallery", params: { name: item.name, qty: item.qty } }}>
-                                            <Pressable>
+                                            <Pressable onPress={() => setAdTrigger((adTrigger) => adTrigger + 1)}>
                                                 <View style={styles.item}>
                                                     <Image transition={1000} style={styles.image} source={item.image} placeholder={"L8FOP=~UKOxt$mI9IAbGBQw[%MRk"} />
                                                     <View style={styles.info}>
@@ -66,7 +63,7 @@ const styles = StyleSheet.create({
         flex: 1,
         gap: 24,
         alignItems: "center",
-        paddingTop: 48,
+        paddingTop: 24,
         backgroundColor: "#fff",
     },
 
@@ -99,9 +96,9 @@ const styles = StyleSheet.create({
 
     info: {
         justifyContent: "center",
-        alignItems: "center", 
+        alignItems: "center",
         width: "100%",
-        height: 85,
+        padding: 8,
         position: "absolute",
         bottom: 0,
         left: 0,

@@ -1,14 +1,14 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import { Link, Stack, useLocalSearchParams } from "expo-router";
 import LottieView from 'lottie-react-native';
-import { createRef, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchImages } from "../src/utils/data";
 import { Pressable } from "react-native";
 import { Image } from "expo-image";
 import Header from "../src/components/header";
-import AdsHandler from "../src/components/AdsHandler";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId } from "../src/utils/constants";
+import { DataContext } from "../src/DataContext";
 
 export default function gallery() {
 
@@ -16,9 +16,7 @@ export default function gallery() {
     const params = useLocalSearchParams();
     const { name, qty } = params;
     const [images, setImages] = useState([]);
-
-    const [triggerAd, setTriggerAd] = useState(0);
-    const adsHandlerRef = createRef();
+    const { adsLoaded, setAdTrigger } = useContext(DataContext);
 
     useEffect(() => {
         if (images.length < 1) {
@@ -26,19 +24,10 @@ export default function gallery() {
         }
     }, [])
 
-    // Gestión de anuncios
-    useEffect(() => {
-        if (triggerAd === 2) {
-            adsHandlerRef.current.showIntersitialAd();
-            setTriggerAd(0)
-        }
-    }, [triggerAd])
-
     return (
         <View style={styles.container}>
             <Stack.Screen options={{ header: () => <Header title={`Diseño de uñas de ${name}`} /> }} />
-            <AdsHandler ref={adsHandlerRef} adType={[0]} />
-            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            { adsLoaded && <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
             {
                 images.length > 0 ?
                     <View style={styles.list}>
@@ -51,7 +40,7 @@ export default function gallery() {
                                 return (
                                     <View key={i} style={styles.itemWrapper}>
                                         <Link asChild href={{ pathname: "/image", params: { image: item } }}>
-                                            <Pressable style={styles.item}>
+                                            <Pressable onPress={() => setAdTrigger((adTrigger) => adTrigger + 1)} style={styles.item}>
                                                 <Image transition={1000} style={styles.image} source={item} placeholder={"L8FOP=~UKOxt$mI9IAbGBQw[%MRk"} />
                                             </Pressable>
                                         </Link>
